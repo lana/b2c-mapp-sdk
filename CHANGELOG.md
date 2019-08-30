@@ -1,5 +1,9 @@
 # Lana B2C Microapp SDK Library Changelog
 
+## v0.2.1
+
+ - Fixing postMessage on native.
+
 ## v0.2.0
 
  - Removing dependency on Singleton. Now functional and using window message passing.

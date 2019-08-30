@@ -116,7 +116,7 @@ function hasParent() {
 function prepareEnvironment() {
 	if (hasAriesLocalBus()) {
 		window.AriesLocalBus.setReceiver((msg) => {
-      window.postMessage(msg)
+      window.postMessage(msg, "*")
     })
 	} else if (!hasParent()) {
 		incorrectConfiguration()
