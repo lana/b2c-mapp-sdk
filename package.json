@@ -1,6 +1,6 @@
 {
   "name": "lana-b2c-mapp-sdk",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Lana B2C MicroApp SDK for interacting with the Mobile Aries browser.",
   "main": "src/AriesSDK.js",
   "scripts": {
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/lana/b2c-mapp-sdk/issues"
   },
-  "homepage": "https://github.com/lana/b2c-mapp-sdk#readme"
+  "homepage": "https://github.com/lana/b2c-mapp-sdk#readme",
+  "dependencies": {
+    "uuid": "^3.0.0"
+  }
 }

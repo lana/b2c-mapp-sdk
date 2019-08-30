@@ -1,111 +1,132 @@
-import AriesBus from './AriesBus'
+import uuidv4 from 'uuid/v4'
 
-let singleton = null
+let sdk = {}
+
+sdk.webViewLoaded = function() {
+	return invoke("view.loaded", {})
+}
+sdk.closeWebView = function() {
+	return invoke("view.close", {})
+}
+	
+sdk.setAppBarTitle = function(title) {
+	return invoke("view.title", { title: title || "" })
+}
+
+sdk.setWebViewLayout = function(displayMode) {
+	return invoke("view.layout", { displayMode: displayMode || "stack" })
+}
+
+sdk.setWebViewDismissIcon = function(icon) {
+	return invoke('view.dismiss-icon', { icon: icon || "close" })
+}
+
+sdk.scanQRCode = function() {
+	return invoke('scan.qr', {})
+}
+
+sdk.scanBarcode = function() {
+	return invoke('scan.barcode', {})
+}
+
+sdk.createSelfie = function(userId) {
+	return invoke('selfie.enrole', { userId })
+}
+
+sdk.verifySelfie = function(userId) {
+	return invoke('selfie.verify', { userId })
+}
+
+sdk.shareText = function(text) {
+	return invoke('share.text', { text: text || "" })
+}
+
+sdk.fetchUser = function() {
+	return invoke('user.fetch', {})
+}
+
+sdk.fetchAccount = function() {
+	return invoke('account.fetch', {})
+}
+
+sdk.transactionExecute = function(params) {
+	return invoke('transaction.execute', params)
+}
+
+sdk.sessionSign = function(params) {
+	return invoke('session.sign', params)
+}
 
 /*
- * AriesSDK
- *
- * Maps function calls that return promises to events in the AriesBus.
+ * invoke will create a promise that will publish a message
+ * to the bus and wait for a response message with a matching
+ * ID.
  */
-class AriesSDK {
-
-	constructor() {
-		if (! singleton) {
-			singleton = this
-			this.nextMsgId = 0
-			this.promises = {}
-
-			this.bus = new AriesBus((msg) => { this.receive(msg) })
+function invoke(topic, params) {
+	return new Promise((resolve, reject) => {
+		var msg = {
+			id: uuidv4(),
+			topic: topic,
+			params: params
 		}
-		return singleton
-	}
-
-	webViewLoaded() {
-		return this.invoke("view.loaded", {})
-	}
-
-	closeWebView() {
-		return this.invoke("view.close", {})
-	}
-	
-	setAppBarTitle(title) {
-		return this.invoke("view.title", { title: title || "" })
-	}
-
-	setWebViewLayout(displayMode) {
-		return this.invoke("view.layout", { displayMode: displayMode || "stack" })
-	}
-
-	setWebViewDismissIcon(icon) {
-		return this.invoke('view.dismiss-icon', { icon: icon || "close" })
-	}
-
-	scanQRCode() {
-		return this.invoke('scan.qr', {})
-	}
-
-	scanBarcode() {
-		return this.invoke('scan.barcode', {})
-	}
-
-	createSelfie(userId) {
-		return this.invoke('selfie.enrole', { userId })
-	}
-
-	verifySelfie(userId) {
-		return this.invoke('selfie.verify', { userId })
-	}
-
-	shareText(text) {
-		return this.invoke('share.text', { text: text || "" })
-	}
-
-	fetchUser() {
-		return this.invoke('user.fetch', {})
-	}
-
-	fetchAccount() {
-		return this.invoke('account.fetch', {})
-	}
-
-	transactionExecute(params) {
-		return this.invoke('transaction.execute', params)
-	}
-
-	sessionSign(params) {
-		return this.invoke('session.sign', params)
-	}
-
-	invoke(topic, params) {
-		return new Promise((resolve, reject) => {
-			const id = ++this.nextMsgId
-			this.promises[id] = { resolve, reject }
-			var msg = {
-				id: id,
-				topic: topic,
-				params: params
+		let receiver = function(ev) {
+			if (ev.data && ev.data.id == msg.id) {
+				let msg = ev.data
+				try {
+					switch (msg.result) {
+						case "ok":
+							resolve(msg)
+						default:
+							reject(msg)
+					}
+				} finally {
+					// cleanup
+					window.removeEventListener("message", receiver, false)
+				}
 			}
-			this.bus.publish(msg)
-		}).then((msg) => {
-			// Always extract the message response. May be an empty object.
-			return msg.response || {}
-		})
-	}
+		}
+    window.addEventListener("message", receiver, false)
+		publish(msg)
+	}).then((msg) => {
+		// Always extract the message response. May be an empty object.
+		return msg.response || {}
+	})
+}
 
-	receive(msg) {
-		let pr = this.promises[msg.id]
-		if (!pr) {
-			// ignore missing Promise
-			return
-		}
-		delete this.promises[msg.id]
-		switch (msg.result) {
-			case "ok":
-				pr.resolve(msg)
-      default:
-				pr.reject(msg)
-		}
+function publish(msg) {
+	if (hasParent()) {
+    window.parent.postMessage(msg, "*")
+	} else if (hasAriesLocalBus()) {
+    window.AriesLocalBus.publish(msg)
+	} else {
+		incorrectConfiguration()
 	}
 }
 
-export default new AriesSDK()
+function hasAriesLocalBus() {
+	return ("AriesLocalBus" in window)
+}
+
+function hasParent() {
+	return ("parent" in window && window.parent != window)
+}
+
+// prepareEnvironment will set up a message bus either using the 
+// window.AriesLocalBus, or the parent.
+function prepareEnvironment() {
+	if (hasAriesLocalBus()) {
+		window.AriesLocalBus.setReceiver((msg) => {
+      window.postMessage(msg)
+    })
+	} else if (!hasParent()) {
+		incorrectConfiguration()
+	}
+}
+
+function incorrectConfiguration() {
+  alert("Invalid µApp configuration! Environment not supported.")
+}
+
+prepareEnvironment()
+
+export default sdk
