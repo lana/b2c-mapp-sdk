@@ -53,6 +53,10 @@ sdk.transactionExecute = function(params) {
 	return invoke('transaction.execute', params)
 }
 
+sdk.sessionToken = function() {
+	return invoke('session.token', {})
+}
+
 sdk.sessionSign = function(params) {
 	return invoke('session.sign', params)
 }

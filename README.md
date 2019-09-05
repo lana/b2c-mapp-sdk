@@ -24,7 +24,8 @@ Messages are sent from the webview with a specific event type that the native ap
 | `transaction.execute` | µApp | Show a view that will use to provided attributes to prepare a new transaction to be sent to the server to execute inmediatly. |
 | `transaction.request` | µApp | Similar to `transaction.execute`, but will send a request to receive money. |
 | `share.text` | µApp | Launch the native sharing components to be able to copy and paste or send the provide text. |
-| `session.sign` | µApp | Generate a JSON Web Signature for the current microapp and optionally contain additional signed data provided in the params. |
+| `session.token` | µApp | Generate a JSON Web Token, with no additional payload, for the current microapp suitable for authenticating the user from an external service with the OAuth Applications secret client key. |
+| `session.sign` | µApp | Like for `session.token`, will generate a JSON Web Signature for the current microapp, but containing additional signed data provided in the params. *NOTE:* In the future, this request *may* cause a popup to be launched for the user's permission. |
 
 Messages are published in a standardised format that must include a `topic` and `params` if there are any. For example:
 
