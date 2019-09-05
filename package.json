@@ -1,5 +1,5 @@
 {
-  "name": "lana-b2c-mapp-sdk",
+  "name": "@lana/b2c-mapp-sdk",
   "version": "0.2.2",
   "description": "Lana B2C MicroApp SDK for interacting with the Mobile Aries browser.",
   "main": "src/AriesSDK.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lana/b2c-mapp-sdk.git"
+    "url": "git://github.com/lana/b2c-mapp-sdk.git"
   },
   "author": "Sam Lown",
   "license": "ISC",
