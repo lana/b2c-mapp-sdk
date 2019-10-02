@@ -89,7 +89,7 @@ function invoke(topic, params) {
 				}
 			}
 		}
-    window.addEventListener("message", receiver, false)
+		window.addEventListener("message", receiver, false)
 		publish(msg)
 	}).then((msg) => {
 		// Always extract the message response. May be an empty object.
@@ -131,6 +131,9 @@ function incorrectConfiguration() {
   alert(`Environment not supported. ${navigator.userAgent} | AriesLocalBus: ${window.AriesLocalBus}`)
 }
 
-prepareEnvironment()
+// Prepare environment when DOM is loaded
+document.addEventListener("DOMContentLoaded", function(){
+	prepareEnvironment()
+});
 
 export default sdk
