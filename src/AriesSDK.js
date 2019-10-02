@@ -8,7 +8,7 @@ sdk.webViewLoaded = function() {
 sdk.closeWebView = function() {
 	return invoke("view.close", {})
 }
-	
+
 sdk.setAppBarTitle = function(title) {
 	return invoke("view.title", { title: title || "" })
 }
@@ -115,7 +115,7 @@ function hasParent() {
 	return ("parent" in window && window.parent != window)
 }
 
-// prepareEnvironment will set up a message bus either using the 
+// prepareEnvironment will set up a message bus either using the
 // window.AriesLocalBus, or the parent.
 function prepareEnvironment() {
 	if (hasAriesLocalBus()) {
@@ -128,7 +128,7 @@ function prepareEnvironment() {
 }
 
 function incorrectConfiguration() {
-  alert("Invalid µApp configuration! Environment not supported.")
+  alert(`Environment not supported. ${navigator.userAgent} | AriesLocalBus: ${window.AriesLocalBus}`)
 }
 
 prepareEnvironment()
