@@ -99,9 +99,9 @@ function invoke(topic, params) {
 
 function publish(msg) {
 	if (hasParent()) {
-    window.parent.postMessage(msg, "*")
+		window.parent.postMessage(msg, "*")
 	} else if (hasAriesLocalBus()) {
-    window.AriesLocalBus.publish(msg)
+		window.AriesLocalBus.publish(msg)
 	} else {
 		incorrectConfiguration()
 	}
@@ -120,20 +120,17 @@ function hasParent() {
 function prepareEnvironment() {
 	if (hasAriesLocalBus()) {
 		window.AriesLocalBus.setReceiver(function(msg) {
-      window.postMessage(msg, "*")
-    })
+			window.postMessage(msg, "*")
+		})
 	} else if (!hasParent()) {
 		incorrectConfiguration()
 	}
 }
 
 function incorrectConfiguration() {
-  alert(`Environment not supported. ${navigator.userAgent} | AriesLocalBus: ${window.AriesLocalBus}`)
+	alert(`Environment not supported. ${navigator.userAgent} / AriesLocalBus: ${window.AriesLocalBus}`)
 }
 
-// Prepare environment when DOM is loaded
-document.addEventListener("DOMContentLoaded", function(){
-	prepareEnvironment()
-});
+prepareEnvironment()
 
 export default sdk
