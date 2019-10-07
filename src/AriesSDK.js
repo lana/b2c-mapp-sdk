@@ -123,10 +123,6 @@ function prepareEnvironment() {
 		window.AriesLocalBus.setReceiver(function(msg) {
 			window.postMessage(msg, "*")
 		})
-		if(typeof retryAries === 'number') {
-			window.clearTimeout(retryAries);
-			console.log('!!! Clear retryAries timeout !!!')
-		}
 	} else if (!hasParent()) {
 		incorrectConfiguration()
 	}
@@ -134,6 +130,7 @@ function prepareEnvironment() {
 
 function incorrectConfiguration() {
 	console.log(`Environment not supported. ${navigator.userAgent} / AriesLocalBus: ${window.AriesLocalBus}`)
+	window.clearTimeout(retryAries);
 	retryAries = window.setTimeout(function() {
 		prepareEnvironment()
 		console.log('=== Retry AriesSDK ===')
