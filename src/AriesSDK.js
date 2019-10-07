@@ -1,6 +1,7 @@
 import uuidv4 from 'uuid/v4'
 
 let sdk = {}
+let retryAries
 
 sdk.webViewLoaded = function() {
 	return invoke("view.loaded", {})
@@ -122,13 +123,21 @@ function prepareEnvironment() {
 		window.AriesLocalBus.setReceiver(function(msg) {
 			window.postMessage(msg, "*")
 		})
+		if(typeof retryAries === 'number') {
+			window.clearTimeout(retryAries);
+			console.log('!!! Clear retryAries timeout !!!')
+		}
 	} else if (!hasParent()) {
 		incorrectConfiguration()
 	}
 }
 
 function incorrectConfiguration() {
-	alert(`Environment not supported. ${navigator.userAgent} / AriesLocalBus: ${window.AriesLocalBus}`)
+	console.log(`Environment not supported. ${navigator.userAgent} / AriesLocalBus: ${window.AriesLocalBus}`)
+	retryAries = window.setTimeout(function() {
+		prepareEnvironment()
+		console.log('=== Retry AriesSDK ===')
+	}, 2000);
 }
 
 prepareEnvironment()
