@@ -1,7 +1,6 @@
 import uuidv4 from 'uuid/v4'
 
 let sdk = {}
-let retryAries
 
 sdk.webViewLoaded = function() {
 	return invoke("view.loaded", {})
@@ -90,7 +89,7 @@ function invoke(topic, params) {
 				}
 			}
 		}
-		window.addEventListener("message", receiver, false)
+    window.addEventListener("message", receiver, false)
 		publish(msg)
 	}).then((msg) => {
 		// Always extract the message response. May be an empty object.
@@ -100,9 +99,9 @@ function invoke(topic, params) {
 
 function publish(msg) {
 	if (hasParent()) {
-		window.parent.postMessage(msg, "*")
+    window.parent.postMessage(msg, "*")
 	} else if (hasAriesLocalBus()) {
-		window.AriesLocalBus.publish(msg)
+    window.AriesLocalBus.publish(msg)
 	} else {
 		incorrectConfiguration()
 	}
@@ -121,20 +120,15 @@ function hasParent() {
 function prepareEnvironment() {
 	if (hasAriesLocalBus()) {
 		window.AriesLocalBus.setReceiver(function(msg) {
-			window.postMessage(msg, "*")
-		})
+      window.postMessage(msg, "*")
+    })
 	} else if (!hasParent()) {
 		incorrectConfiguration()
 	}
 }
 
 function incorrectConfiguration() {
-	console.log(`Environment not supported. ${navigator.userAgent} / AriesLocalBus: ${window.AriesLocalBus}`)
-	window.clearTimeout(retryAries);
-	retryAries = window.setTimeout(function() {
-		prepareEnvironment()
-		console.log('=== Retry AriesSDK ===')
-	}, 2000);
+  alert(`Environment not supported. ${navigator.userAgent} | AriesLocalBus: ${window.AriesLocalBus}`)
 }
 
 prepareEnvironment()
