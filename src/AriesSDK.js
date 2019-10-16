@@ -61,8 +61,8 @@ sdk.sessionSign = function(params) {
 	return invoke('session.sign', params)
 }
 
-sdk.scanIdentity = function(docsAllowed = []) {
-	return invoke('scan.identity', { allow: docsAllowed })
+sdk.scanIdentity = function(docsAllowed) {
+	return invoke('scan.identity', { allow: docsAllowed || [] })
 }
 
 /*
