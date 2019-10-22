@@ -1,6 +1,6 @@
 {
   "name": "@lana/b2c-mapp-sdk",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "Lana B2C MicroApp SDK for interacting with the Mobile Aries browser.",
   "main": "src/AriesSDK.js",
   "scripts": {

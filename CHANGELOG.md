@@ -1,5 +1,9 @@
 # Lana B2C Microapp SDK Library Changelog
 
+## v0.2.9
+
+ - Support for `scan.identity` message and SDK request.
+
 ## v0.2.2
 
  - Support for `session.token` message and SDK request.
