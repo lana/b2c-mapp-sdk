@@ -61,6 +61,10 @@ sdk.sessionSign = function(params) {
 	return invoke('session.sign', params)
 }
 
+sdk.scanIdentity = function(docsAllowed) {
+	return invoke('scan.identity', { allow: docsAllowed || [] })
+}
+
 /*
  * invoke will create a promise that will publish a message
  * to the bus and wait for a response message with a matching
