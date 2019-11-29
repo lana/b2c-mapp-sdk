@@ -17,6 +17,7 @@ Messages are sent from the webview with a specific event type that the native ap
 | `view.title` | µApp | Set the application view title. |
 | `scan.qr` | µApp | Launch a view to scan a QR code |
 | `scan.barcode` | µApp | Launch a view to scan a regular Barcode |
+| `scan.identity` | µApp | Launch a view to scan an identification document and verify the identity of the user for KYC purposes. |
 | `selfie.enrole` | µApp | Launch a view that will be used to enrole a new selfie, usually used in signup. |
 | `selfie.verify` | µApp | Launch a view to verify an existing selfie. |
 | `user.fetch` | µApp | Request data on the current user. |
@@ -83,9 +84,9 @@ If none of the options are detected, the SDK will generate an error.
 
 ### Response Payloads
 
-All response payloads are JSON objectives. We show nested data with a `.` seperator. Fields with `[]` imply an array of sub-objects.
+All response payloads are JSON objects. We show nested data with a `.` seperator. Fields with `[]` imply an array of sub-objects.
 
-Responses bodies should follow lowercase `snake_case` semantics, with a preference for short names. This most closely matches the naming of protobuf definitions, firebase data, and CouchDB documents.
+Response bodies should follow lowercase `snake_case` semantics, with a preference for short names. This most closely matches the naming of protobuf definitions, firebase data, and CouchDB documents.
 
 #### User
 
@@ -173,7 +174,7 @@ AriesSDK.shareText('text to share')
 
 ### AriesSDK.transactionExecute(settings: Object)
 
-Launches the payment screen with the given seetings.
+Launches the payment screen with the given settings.
 
 | Option |  Value Type | Required |
 | --- | --- | --- |
@@ -182,3 +183,14 @@ Launches the payment screen with the given seetings.
 | `destinationURL` | `String` | **true** | 
 | `title` | `String` | **true** | 
 | `meta` | `String` | **true** | 
+
+### AriesSDK.scanIdentity(settings: Object)
+
+Launch a view to scan an identification document and verify the identity of the user for KYC purposes.
+
+| Option |  Value Type | Description | Required |
+| --- | --- | --- | --- |
+| `allowed[]` | `Array` | List of allowed countries and document types the user can select to scan | **false** |
+| `allowed[].countryCodes[]` | `String` | List of [2-letter country codes](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) for which to enable the document types in the `types` array | **true** | 
+| `allowed[].types[]` | `String` | Document types to enable for the specified countries. Accepted values are: `id-card`, `passport`, `resident-permit`, `eu-resident-permit`, `driver-license` | **true** | 
+| `showVerbalContractScreen` | `Boolean` | Controls whether the screen where the user has to read aloud the acceptance of the terms and conditions is shown. Default is `false`. | **false** | 

@@ -1,5 +1,9 @@
 # Lana B2C Microapp SDK Library Changelog
 
+## v0.2.10
+
+ - `scanIdentity` should accept a parameter which needs to specify allowed docs. Docs update for `scanIdentity`.
+
 ## v0.2.9
 
  - Support for `scan.identity` message and SDK request.
