@@ -27,6 +27,7 @@ Messages are sent from the webview with a specific event type that the native ap
 | `share.text` | µApp | Launch the native sharing components to be able to copy and paste or send the provide text. |
 | `session.token` | µApp | Generate a JSON Web Token, with no additional payload, for the current microapp suitable for authenticating the user from an external service with the OAuth Applications secret client key. |
 | `session.sign` | µApp | Like for `session.token`, will generate a JSON Web Signature for the current microapp, but containing additional signed data provided in the params. *NOTE:* In the future, this request *may* cause a popup to be launched for the user's permission. |
+| `analytics.event` | µApp | Sends event using the native SDK. |
 
 Messages are published in a standardised format that must include a `topic` and `params` if there are any. For example:
 
@@ -178,11 +179,11 @@ Launches the payment screen with the given settings.
 
 | Option |  Value Type | Required |
 | --- | --- | --- |
-| `currency` | `String` [currency notation](https://en.wikipedia.org/wiki/ISO_4217) | **true** | 
-| `amount` | `String` | **true** | 
-| `destinationURL` | `String` | **true** | 
-| `title` | `String` | **true** | 
-| `meta` | `String` | **true** | 
+| `currency` | `String` [currency notation](https://en.wikipedia.org/wiki/ISO_4217) | **true** |
+| `amount` | `String` | **true** |
+| `destinationURL` | `String` | **true** |
+| `title` | `String` | **true** |
+| `meta` | `String` | **true** |
 
 ### AriesSDK.scanIdentity(settings: Object)
 
@@ -191,6 +192,6 @@ Launch a view to scan an identification document and verify the identity of the 
 | Option |  Value Type | Description | Required |
 | --- | --- | --- | --- |
 | `allow[]` | `Array` | List of allowed countries and document types the user can select to scan | **false** |
-| `allow[].countryCodes[]` | `String` | List of [2-letter country codes](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) for which to enable the document types in the `types` array | **true** | 
-| `allow[].types[]` | `String` | Document types to enable for the specified countries. Accepted values are: `id-card`, `passport`, `resident-permit`, `eu-resident-permit`, `driver-license` | **true** | 
-| `showVerbalContractScreen` | `Boolean` | Controls whether the screen where the user has to read aloud the acceptance of the terms and conditions is shown. Default is `false`. | **false** | 
+| `allow[].countryCodes[]` | `String` | List of [2-letter country codes](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) for which to enable the document types in the `types` array | **true** |
+| `allow[].types[]` | `String` | Document types to enable for the specified countries. Accepted values are: `id-card`, `passport`, `resident-permit`, `eu-resident-permit`, `driver-license` | **true** |
+| `showVerbalContractScreen` | `Boolean` | Controls whether the screen where the user has to read aloud the acceptance of the terms and conditions is shown. Default is `false`. | **false** |
