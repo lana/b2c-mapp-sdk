@@ -65,6 +65,10 @@ sdk.scanIdentity = function(params) {
 	return invoke('scan.identity', params)
 }
 
+sdk.analyticsEvent = function(params) {
+	return invoke('analytics.event', parans)
+}
+
 /*
  * invoke will create a promise that will publish a message
  * to the bus and wait for a response message with a matching
