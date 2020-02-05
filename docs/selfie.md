@@ -1,15 +1,16 @@
 ### AriesSDK.createSelfie(userId: String)
 
-Launch a view that will be used to enrole a new selfie, usually used in signup.
-
 ```js readonly
 AriesSDK.createSelfie('userId')
 ```
 
-### AriesSDK.verifySelfie(userId: String)
+Launch a view that will be used to enrole a new selfie, usually used in signup.
 
-Launch a view to verify an existing selfie.
+
+### AriesSDK.verifySelfie(userId: String)
 
 ```js readonly
 AriesSDK.verifySelfie('userId')
 ```
+
+Launch a view to verify an existing selfie.

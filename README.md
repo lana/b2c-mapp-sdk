@@ -26,7 +26,7 @@ Messages are sent from the webview with a specific event type that the native ap
 | [share.text](docs/share.md#ariessdksharetextcontent-string) | µApp | Launch the native sharing components to be able to copy and paste or send the provide text. |
 | [session.token](docs/session.md#ariessdksessiontoken) | µApp | Generate a JSON Web Token, with no additional payload, for the current microapp suitable for authenticating the user from an external service with the OAuth Applications secret client key. |
 | [session.sign](docs/session.md#ariessdksessionsign) | µApp | Like for `session.token`, will generate a JSON Web Signature for the current microapp, but containing additional signed data provided in the params. *NOTE:* In the future, this request *may* cause a popup to be launched for the user's permission. |
-| `analytics.event` | µApp | Sends event using the native SDK. |
+| [analytics.event](docs/analytcis.md#ariessdkanalyticseventevent-object) | µApp | Sends event using the native SDKs. |
 
 Messages are published in a standardised format that must include a `topic` and `params` if there are any. For example:
 
@@ -88,33 +88,6 @@ All response payloads are JSON objects. We show nested data with a `.` seperator
 
 Response bodies should follow lowercase `snake_case` semantics, with a preference for short names. This most closely matches the naming of protobuf definitions, firebase data, and CouchDB documents.
 
-#### User
-
-User details are provided on the `user.fetch` topic.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `region_id` | string | Two-letter code of the user's region. |
-| `locale` | string | ISO code for user's locale, e.g. `es-MX`, `en-US`, etc. |
-| `name.prefix` | string | Like Mr. Mrs. Miss, etc. Not normally used. |
-| `name.given` | string | First or given name. |
-| `name.surname` | string | First Surname. |
-| `name.surname2` | string | Optional second surname. |
-| `name.full` | string | Convenience output, shows the user's complete name. |
-| `tel[].num` | string | User's active telephone numbers, the first always being the default. |
-| `tel[].label` | string | Label or alternative name for the number. |
-
-#### Account
-
-Accounts are povided on the `account.fetch` topic.
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `product_id` | string | ID of the account's product type. |
-| `owner_name` | string | Brief name of the account owner. |
-| `num` | string | Account's regional short-number. Can be used for generating complete bank codes with a conversion algorithm. |
-
-
-## AriesSDK Methods
+### AriesSDK Methods
 
 The Aries SDK methods are provided by the SDK to provide a wrapper around the message bus events. Each will return an ES6 Promise.
