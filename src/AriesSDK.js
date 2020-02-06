@@ -66,7 +66,7 @@ sdk.scanIdentity = function(params) {
 }
 
 sdk.analyticsEvent = function(params) {
-	return invoke('analytics.event', parans)
+	return invoke('analytics.event', params)
 }
 
 /*
