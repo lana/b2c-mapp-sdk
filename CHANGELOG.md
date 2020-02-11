@@ -2,6 +2,8 @@
 
 ## v0.3.0
 - Added support for `analytics.event`
+- Added support for `view.show-support-icon`
+- Added support for `user.region-id`
 
 ## v0.2.10
 

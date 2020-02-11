@@ -21,6 +21,10 @@ sdk.setWebViewDismissIcon = function(icon) {
 	return invoke('view.dismiss-icon', { icon: icon || "close" })
 }
 
+sdk.showSupportIcon = function(show) {
+	return invoke('view.show-support-icon', { show: show || true })
+}
+
 sdk.scanQRCode = function() {
 	return invoke('scan.qr', {})
 }
@@ -43,6 +47,10 @@ sdk.shareText = function(text) {
 
 sdk.fetchUser = function() {
 	return invoke('user.fetch', {})
+}
+
+sdk.setDefaultRegionId = function(regionId) {
+	return invoke('user.region-id', { regionId: regionId || "" })
 }
 
 sdk.fetchAccount = function() {

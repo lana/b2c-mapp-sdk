@@ -42,3 +42,11 @@ AriesSDK.setWebViewDismissIcon('back')
 ```
 
 Changes the dismiss icon visible in the native UI top-bar.
+
+### AriesSDK.showSupportIcon(show)
+
+```js readonly
+AriesSDK.showSupportIcon(false);
+```
+
+Whether we want to show (true) or hide (false) the support icon.
