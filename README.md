@@ -28,7 +28,7 @@ Messages are sent from the webview with a specific event type that the native ap
 | [share.text](docs/share.md#ariessdksharetextcontent-string) | µApp | Launch the native sharing components to be able to copy and paste or send the provide text. |
 | [session.token](docs/session.md#ariessdksessiontoken) | µApp | Generate a JSON Web Token, with no additional payload, for the current microapp suitable for authenticating the user from an external service with the OAuth Applications secret client key. |
 | [session.sign](docs/session.md#ariessdksessionsign) | µApp | Like for `session.token`, will generate a JSON Web Signature for the current microapp, but containing additional signed data provided in the params. *NOTE:* In the future, this request *may* cause a popup to be launched for the user's permission. |
-| [analytics.event](docs/analytcis.md#ariessdkanalyticseventevent-object) | µApp | Sends event using the native SDKs. |
+| [analytics.event](docs/analytics.md#ariessdkanalyticseventevent-object) | µApp | Sends event using the native SDKs. |
 
 Messages are published in a standardised format that must include a `topic` and `params` if there are any. For example:
 
