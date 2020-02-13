@@ -15,12 +15,14 @@ Messages are sent from the webview with a specific event type that the native ap
 | [view.layout](docs/view.md#ariessdksetwebviewlayoutdisplaymode-overlay-stack) | µApp | Set the layout. |
 | [view.dismiss-icon](docs/view.md#ariessdksetwebviewdismissiconicon-close-back-none) | µApp | Set the icon used to dismiss the view. |
 | [view.title](docs/view.md#ariessdksetappbartitletitle-string) | µApp | Set the application view title. |
+| [view.show-support-icon](docs/view.md#ariessdkshowsupporticonpayload-object) | µApp | Shows or hides the support icon from the UI. |
 | [scan.qr](docs/scan.md#ariessdkscanqrcode) | µApp | Launch a view to scan a QR code |
 | [scan.barcode](docs/scan.md#ariessdkscanbarcode) | µApp | Launch a view to scan a regular Barcode |
 | [scan.identity](docs/scan.md#ariessdkscanidentitysettings-object) | µApp | Launch a view to scan an identification document and verify the identity of the user for KYC purposes. |
 | [selfie.enrole](docs/selfie.md#ariessdkcreateselfieuserId-string) | µApp | Launch a view that will be used to enrole a new selfie, usually used in signup. |
 | [selfie.verify](docs/selfie.md#ariessdkverifyselfieuserId-string) | µApp | Launch a view to verify an existing selfie. |
 | [user.fetch](docs/user.md#ariessdkfetchuser) | µApp | Request data on the current user. |
+| [user.region-id](docs/user.md#ariessdksetdefaultregionidregionid-string) | µApp | Sets the default region for the current microapp. This will be used as a fallback when the user is logged out. |
 | [account.fetch](docs/account.md#ariessdkfetchaccount) | µApp | Request data on the currently selected account. |
 | [transaction.execute](docs/transaction.md#ariessdktransactionexecutesettings-object) | µApp | Show a view that will use to provided attributes to prepare a new transaction to be sent to the server to execute inmediatly. |
 | [share.text](docs/share.md#ariessdksharetextcontent-string) | µApp | Launch the native sharing components to be able to copy and paste or send the provide text. |
