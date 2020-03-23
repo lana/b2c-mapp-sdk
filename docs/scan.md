@@ -25,3 +25,17 @@ AriesSDK.scanBarcode()
 ```
 
 Launch a view to scan a regular Barcode
+
+### AriesSDK.scanDocument()
+
+```js readonly
+AriesSDK.scanDocument()
+```
+
+Launch a view to scan a document. It returns on the payload the hash for the stored document.
+
+Response:
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `hash` | string | Stored document hash. |
