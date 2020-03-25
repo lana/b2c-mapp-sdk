@@ -1,5 +1,8 @@
 # Lana B2C Microapp SDK Library Changelog
 
+## v.0.4.0
+- Added support for `scan.document`
+
 ## v0.3.0
 - Added support for `analytics.event`
 - Added support for `view.show-support-icon`
