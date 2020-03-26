@@ -77,10 +77,6 @@ sdk.analyticsEvent = function(params) {
 	return invoke('analytics.event', params)
 }
 
-sdk.scanIdentity = function(params) {
-	return invoke('scan.identity', params)
-}
-
 sdk.scanDocument = function() {
 	return invoke('scan.document', {})
 }
