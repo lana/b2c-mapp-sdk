@@ -19,6 +19,7 @@ Messages are sent from the webview with a specific event type that the native ap
 | [scan.qr](docs/scan.md#ariessdkscanqrcode) | µApp | Launch a view to scan a QR code |
 | [scan.barcode](docs/scan.md#ariessdkscanbarcode) | µApp | Launch a view to scan a regular Barcode |
 | [scan.identity](docs/scan.md#ariessdkscanidentitysettings-object) | µApp | Launch a view to scan an identification document and verify the identity of the user for KYC purposes. |
+| [scan.document](docs/scan.md#ariessdkscandocument) | µApp | Launch a view to scan a document. |
 | [selfie.enrole](docs/selfie.md#ariessdkcreateselfieuserId-string) | µApp | Launch a view that will be used to enrole a new selfie, usually used in signup. |
 | [selfie.verify](docs/selfie.md#ariessdkverifyselfieuserId-string) | µApp | Launch a view to verify an existing selfie. |
 | [user.fetch](docs/user.md#ariessdkfetchuser) | µApp | Request data on the current user. |
