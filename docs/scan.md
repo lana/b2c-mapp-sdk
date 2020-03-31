@@ -32,10 +32,21 @@ Launch a view to scan a regular Barcode
 AriesSDK.scanDocument()
 ```
 
-Launch a view to scan a document. It returns on the payload the hash for the stored document.
+Launch a view to scan a document. It returns on the payload the hash and the name of the stored document.
 
 Response:
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `hash` | string | Stored document hash. |
+| `name` | string | Stored document name. |
+
+A successful response body will contain the following information:
+```js readonly
+{
+  response: {
+    "hash":"762c406af516e07bde1c08d3d8d6c036701e49a5825b8fa785ceae3c0786695b",
+    "name":"proofOfAddress"
+    }
+}
+```
