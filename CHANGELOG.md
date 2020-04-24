@@ -1,4 +1,6 @@
 # Lana B2C Microapp SDK Library Changelog
+## v.0.4.1
+- Deprecating in the docs `user.region-id` and `view.show-support-icon` android apps greater than `1.0.536` will return success response but do nothing when receiving messages using those topics
 
 ## v.0.4.0
 - Added support for `scan.document`
