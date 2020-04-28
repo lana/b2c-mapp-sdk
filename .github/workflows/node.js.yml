@@ -15,7 +15,7 @@ jobs:
         node-version: [12.x]
 
     env:
-      working-dir: ./src
+      working-dir: ./
 
     steps:
     - uses: actions/checkout@v2
