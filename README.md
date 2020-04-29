@@ -23,13 +23,14 @@ Messages are sent from the webview with a specific event type that the native ap
 | [selfie.enrole](docs/selfie.md#ariessdkcreateselfieuserId-string) | µApp | Launch a view that will be used to enrole a new selfie, usually used in signup. | |
 | [selfie.verify](docs/selfie.md#ariessdkverifyselfieuserId-string) | µApp | Launch a view to verify an existing selfie. |
 | [user.fetch](docs/user.md#ariessdkfetchuser) | µApp | Request data on the current user. | |
-| :warning: [user.region-id](docs/user.md#ariessdksetdefaultregionidregionid-string) | µApp | Sets the default region for the current microapp. This will be used as a fallback when the user is logged out. | No Op on Android versions greater than `1.0.536` |
 | [account.fetch](docs/account.md#ariessdkfetchaccount) | µApp | Request data on the currently selected account. | |
 | [transaction.execute](docs/transaction.md#ariessdktransactionexecutesettings-object) | µApp | Show a view that will use to provided attributes to prepare a new transaction to be sent to the server to execute inmediatly. | |
 | [share.text](docs/share.md#ariessdksharetextcontent-string) | µApp | Launch the native sharing components to be able to copy and paste or send the provide text. | |
 | [session.token](docs/session.md#ariessdksessiontoken) | µApp | Generate a JSON Web Token, with no additional payload, for the current microapp suitable for authenticating the user from an external service with the OAuth Applications secret client key. | |
 | [session.sign](docs/session.md#ariessdksessionsign) | µApp | Like for `session.token`, will generate a JSON Web Signature for the current microapp, but containing additional signed data provided in the params. *NOTE:* In the future, this request *may* cause a popup to be launched for the user's permission. | |
 | [analytics.event](docs/analytics.md#ariessdkanalyticseventevent-object) | µApp | Sends event using the native SDKs. | |
+| [native.is-topic-supported](docs/native.md#istopicsupported-string) | µApp | Checks if the provided topic is supported by the native app. | Supported in android > 1.0.536 |
+| [native.open-email-inbox](docs/native.md#native.openemailinbox) | µApp | Opens the native email inbox (or the activity picker if there is no default email app) | Supported in android > 1.0.536 |
 
 Messages are published in a standardised format that must include a `topic` and `params` if there are any. For example:
 
