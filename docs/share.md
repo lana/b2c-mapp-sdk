@@ -1,7 +1,7 @@
 ### AriesSDK.shareText(content: String)
 
 ```js readonly
-AriesSDK.shareText('text to share')
+AriesSDK.shareText('text to share');
 ```
 
-Allows the webview share any string content through the native share screen
+Allows the webview to share any string content via the native share screen

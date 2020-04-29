@@ -1,4 +1,9 @@
 # Lana B2C Microapp SDK Library Changelog
+
+## v.0.4.2
+- Applied ESLint config as per the latest Lana FE Coding standards
+- Cleaned up docs
+
 ## v.0.4.1
 - Deprecating in the docs `user.region-id` and `view.show-support-icon` android apps greater than `1.0.536` will return success response but do nothing when receiving messages using those topics
 

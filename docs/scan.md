@@ -12,7 +12,7 @@ Launch a view to scan an identification document and verify the identity of the 
 ### AriesSDK.scanQRCode()
 
 ```js readonly
-AriesSDK.scanQRCode()
+AriesSDK.scanQRCode();
 ```
 
 Launch a view to scan a QR code
@@ -21,7 +21,7 @@ Launch a view to scan a QR code
 ### AriesSDK.scanBarcode()
 
 ```js readonly
-AriesSDK.scanBarcode()
+AriesSDK.scanBarcode();
 ```
 
 Launch a view to scan a regular Barcode
@@ -29,10 +29,10 @@ Launch a view to scan a regular Barcode
 ### AriesSDK.scanDocument()
 
 ```js readonly
-AriesSDK.scanDocument()
+AriesSDK.scanDocument();
 ```
 
-Launch a view to scan a document. It returns on the payload the hash and the name of the stored document.
+Launch a view to scan a document. It returns the hash and the name of the stored document.
 
 Response:
 

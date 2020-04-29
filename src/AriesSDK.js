@@ -1,156 +1,119 @@
-import uuidv4 from 'uuid/v4'
+import uuidv4 from 'uuid/v4';
 
-let sdk = {}
+const hasAriesLocalBus = () => ('AriesLocalBus' in window);
 
-sdk.webViewLoaded = function() {
-	return invoke("view.loaded", {})
-}
-sdk.closeWebView = function() {
-	return invoke("view.close", {})
-}
+const hasParent = () => (('parent' in window) && (window.parent !== window));
 
-sdk.setAppBarTitle = function(title) {
-	return invoke("view.title", { title: title || "" })
-}
+const showIncorrectConfigurationAlert = () => { alert(`Environment not supported. ${navigator.userAgent} | AriesLocalBus: ${window.AriesLocalBus}`); }; // eslint-disable-line no-alert
 
-sdk.setWebViewLayout = function(displayMode) {
-	return invoke("view.layout", { displayMode: displayMode || "stack" })
-}
+const publishMessageToBus = (message) => {
+  switch (true) {
+    case (hasParent()):
+      window.parent.postMessage(message, '*');
+      break;
+    case (hasAriesLocalBus()):
+      window.AriesLocalBus.publish(message);
+      break;
+    default: showIncorrectConfigurationAlert();
+  }
+};
 
-sdk.setWebViewDismissIcon = function(icon) {
-	return invoke('view.dismiss-icon', { icon: icon || "close" })
-}
+const unwrapResponse = ({ response = {} } = {}) => response;
 
-sdk.showSupportIcon = function(show) {
-	return invoke('view.show-support-icon', { show: show || true })
-}
+const publishMessageToBusAndWaitForResponseWithMatchingId = (topic, params = {}) => new Promise((resolve, reject) => {
+  const payload = {
+    id: uuidv4(),
+    topic,
+    params,
+  };
+  const receiver = (event) => {
+    if (!(event.data && (event.data.id == payload.id))) { return; } // eslint-disable-line eqeqeq
+    const message = event.data;
+    try {
+      if (message.result === 'ok') {
+        resolve(message);
+        return;
+      }
+      reject(message);
+    } finally {
+      window.removeEventListener('message', receiver, false);
+    }
+  };
+  window.addEventListener('message', receiver, false);
+  publishMessageToBus(payload);
+}).then(unwrapResponse);
 
-sdk.scanQRCode = function() {
-	return invoke('scan.qr', {})
-}
+const setupAriesOrParentMessageBus = () => {
+  if (hasAriesLocalBus()) {
+    const receiver = (message) => { window.postMessage(message, '*'); };
+    window.AriesLocalBus.setReceiver(receiver);
+    return;
+  }
+  if (!hasParent()) { showIncorrectConfigurationAlert(); }
+};
+setupAriesOrParentMessageBus();
 
-sdk.scanBarcode = function() {
-	return invoke('scan.barcode', {})
-}
+const analyticsEvent = (options) => publishMessageToBusAndWaitForResponseWithMatchingId('analytics.event', options);
 
-sdk.createSelfie = function(userId) {
-	return invoke('selfie.enrole', { userId })
-}
+const closeWebView = () => publishMessageToBusAndWaitForResponseWithMatchingId('view.close');
 
-sdk.verifySelfie = function(userId) {
-	return invoke('selfie.verify', { userId })
-}
+const createSelfie = (userId) => publishMessageToBusAndWaitForResponseWithMatchingId('selfie.enrole', { userId });
 
-sdk.shareText = function(text) {
-	return invoke('share.text', { text: text || "" })
-}
+const fetchAccount = () => publishMessageToBusAndWaitForResponseWithMatchingId('account.fetch');
 
-sdk.fetchUser = function() {
-	return invoke('user.fetch', {})
-}
+const fetchUser = () => publishMessageToBusAndWaitForResponseWithMatchingId('user.fetch');
 
-sdk.setDefaultRegionId = function(regionId) {
-	return invoke('user.region-id', { regionId: regionId || "" })
-}
+const scanBarcode = () => publishMessageToBusAndWaitForResponseWithMatchingId('scan.barcode');
 
-sdk.fetchAccount = function() {
-	return invoke('account.fetch', {})
-}
+const scanDocument = () => publishMessageToBusAndWaitForResponseWithMatchingId('scan.document');
 
-sdk.transactionExecute = function(params) {
-	return invoke('transaction.execute', params)
-}
+const scanIdentity = (options) => publishMessageToBusAndWaitForResponseWithMatchingId('scan.identity', options);
 
-sdk.sessionToken = function() {
-	return invoke('session.token', {})
-}
+const scanQRCode = () => publishMessageToBusAndWaitForResponseWithMatchingId('scan.qr');
 
-sdk.sessionSign = function(params) {
-	return invoke('session.sign', params)
-}
+const sessionSign = (options) => publishMessageToBusAndWaitForResponseWithMatchingId('session.sign', options);
 
-sdk.scanIdentity = function(params) {
-	return invoke('scan.identity', params)
-}
+const sessionToken = () => publishMessageToBusAndWaitForResponseWithMatchingId('session.token');
 
-sdk.analyticsEvent = function(params) {
-	return invoke('analytics.event', params)
-}
+const setAppBarTitle = (title = '') => publishMessageToBusAndWaitForResponseWithMatchingId('view.title', { title });
 
-sdk.scanDocument = function() {
-	return invoke('scan.document', {})
-}
+const setDefaultRegionId = (regionId = '') => publishMessageToBusAndWaitForResponseWithMatchingId('user.region-id', { regionId });
 
-/*
- * invoke will create a promise that will publish a message
- * to the bus and wait for a response message with a matching
- * ID.
- */
-function invoke(topic, params) {
-	return new Promise((resolve, reject) => {
-		var msg = {
-			id: uuidv4(),
-			topic: topic,
-			params: params
-		}
-		let receiver = function(ev) {
-			if (ev.data && ev.data.id == msg.id) {
-				let msg = ev.data
-				try {
-					switch (msg.result) {
-						case "ok":
-							resolve(msg)
-						default:
-							reject(msg)
-					}
-				} finally {
-					// cleanup
-					window.removeEventListener("message", receiver, false)
-				}
-			}
-		}
-    window.addEventListener("message", receiver, false)
-		publish(msg)
-	}).then((msg) => {
-		// Always extract the message response. May be an empty object.
-		return msg.response || {}
-	})
-}
+const setWebViewDismissIcon = (icon = 'close') => publishMessageToBusAndWaitForResponseWithMatchingId('view.dismiss-icon', { icon });
 
-function publish(msg) {
-	if (hasParent()) {
-    window.parent.postMessage(msg, "*")
-	} else if (hasAriesLocalBus()) {
-    window.AriesLocalBus.publish(msg)
-	} else {
-		incorrectConfiguration()
-	}
-}
+const setWebViewLayout = (displayMode = 'stack') => publishMessageToBusAndWaitForResponseWithMatchingId('view.layout', { displayMode });
 
-function hasAriesLocalBus() {
-	return ("AriesLocalBus" in window)
-}
+const shareText = (text = '') => publishMessageToBusAndWaitForResponseWithMatchingId('share.text', { text });
 
-function hasParent() {
-	return ("parent" in window && window.parent != window)
-}
+const showSupportIcon = (show) => publishMessageToBusAndWaitForResponseWithMatchingId('view.show-support-icon', { show: (show !== 'false') });
 
-// prepareEnvironment will set up a message bus either using the
-// window.AriesLocalBus, or the parent.
-function prepareEnvironment() {
-	if (hasAriesLocalBus()) {
-		window.AriesLocalBus.setReceiver(function(msg) {
-      window.postMessage(msg, "*")
-    })
-	} else if (!hasParent()) {
-		incorrectConfiguration()
-	}
-}
+const transactionExecute = (options) => publishMessageToBusAndWaitForResponseWithMatchingId('transaction.execute', options);
 
-function incorrectConfiguration() {
-  alert(`Environment not supported. ${navigator.userAgent} | AriesLocalBus: ${window.AriesLocalBus}`)
-}
+const verifySelfie = (userId) => publishMessageToBusAndWaitForResponseWithMatchingId('selfie.verify', { userId });
 
-prepareEnvironment()
+const webViewLoaded = () => publishMessageToBusAndWaitForResponseWithMatchingId('view.loaded');
 
-export default sdk
+const sdk = {
+  analyticsEvent,
+  closeWebView,
+  createSelfie,
+  fetchAccount,
+  fetchUser,
+  scanBarcode,
+  scanDocument,
+  scanIdentity,
+  scanQRCode,
+  sessionSign,
+  sessionToken,
+  setAppBarTitle,
+  setDefaultRegionId,
+  setWebViewDismissIcon,
+  setWebViewLayout,
+  shareText,
+  showSupportIcon,
+  transactionExecute,
+  verifySelfie,
+  webViewLoaded,
+};
+
+export default sdk;

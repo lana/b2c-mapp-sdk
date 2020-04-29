@@ -1,7 +1,7 @@
 ### AriesSDK.fetchAccount()
 
 ```js readonly
-AriesSDK.fetchAccount()
+AriesSDK.fetchAccount();
 ```
 
 Request data on the currently selected account. The response will include the following fields:

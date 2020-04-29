@@ -1,22 +1,31 @@
 {
   "name": "@lana/b2c-mapp-sdk",
-  "version": "0.4.0",
+  "version": "0.4.2",
   "description": "Lana B2C MicroApp SDK for interacting with the Mobile Aries browser.",
-  "main": "src/AriesSDK.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git://github.com/lana/b2c-mapp-sdk.git"
   },
-  "author": "Sam Lown",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/lana/b2c-mapp-sdk/issues"
   },
   "homepage": "https://github.com/lana/b2c-mapp-sdk#readme",
+  "main": "src/AriesSDK.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --ext .jsx,.js ."
+  },
   "dependencies": {
     "uuid": "^3.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-fp": "^2.3.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^3.0.0"
   }
 }
