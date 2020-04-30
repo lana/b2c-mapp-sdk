@@ -95,3 +95,11 @@ Response bodies should follow lowercase `snake_case` semantics, with a preferenc
 ### AriesSDK Methods
 
 The Aries SDK methods are provided by the SDK to provide a wrapper around the message bus events. Each will return an ES6 Promise.
+
+### Releasing
+
+- `git tag #.#.#`
+- `git push origin --tags`
+- `npm publish`
+
+__Do not forget to add info about the release under `releases` tab in this github repo. Thanks.__
