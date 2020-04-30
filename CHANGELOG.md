@@ -1,5 +1,10 @@
 # Lana B2C Microapp SDK Library Changelog
 
+## v0.5.0
+- Removed `user.region-id` since no µapp was using it.
+- Added `native.is-topic-supported`
+- Added `native.open-email-inbox`
+
 ## v.0.4.2
 - Applied ESLint config as per the latest Lana FE Coding standards
 - Cleaned up docs

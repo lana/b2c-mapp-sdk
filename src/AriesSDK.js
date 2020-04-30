@@ -63,6 +63,10 @@ const fetchAccount = () => publishMessageToBusAndWaitForResponseWithMatchingId('
 
 const fetchUser = () => publishMessageToBusAndWaitForResponseWithMatchingId('user.fetch');
 
+const isTopicSupported = (topic) => publishMessageToBusAndWaitForResponseWithMatchingId('native.is-topic-supported', { topic });
+
+const openEmailInbox = () => publishMessageToBusAndWaitForResponseWithMatchingId('native.open-email-inbox');
+
 const scanBarcode = () => publishMessageToBusAndWaitForResponseWithMatchingId('scan.barcode');
 
 const scanDocument = () => publishMessageToBusAndWaitForResponseWithMatchingId('scan.document');
@@ -76,8 +80,6 @@ const sessionSign = (options) => publishMessageToBusAndWaitForResponseWithMatchi
 const sessionToken = () => publishMessageToBusAndWaitForResponseWithMatchingId('session.token');
 
 const setAppBarTitle = (title = '') => publishMessageToBusAndWaitForResponseWithMatchingId('view.title', { title });
-
-const setDefaultRegionId = (regionId = '') => publishMessageToBusAndWaitForResponseWithMatchingId('user.region-id', { regionId });
 
 const setWebViewDismissIcon = (icon = 'close') => publishMessageToBusAndWaitForResponseWithMatchingId('view.dismiss-icon', { icon });
 
@@ -99,6 +101,8 @@ const sdk = {
   createSelfie,
   fetchAccount,
   fetchUser,
+  isTopicSupported,
+  openEmailInbox,
   scanBarcode,
   scanDocument,
   scanIdentity,
@@ -106,7 +110,6 @@ const sdk = {
   sessionSign,
   sessionToken,
   setAppBarTitle,
-  setDefaultRegionId,
   setWebViewDismissIcon,
   setWebViewLayout,
   shareText,
