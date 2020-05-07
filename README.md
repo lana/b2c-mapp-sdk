@@ -15,7 +15,7 @@ Messages are sent from the webview with a specific event type that the native ap
 | [view.layout](docs/view.md#ariessdksetwebviewlayoutdisplaymode-overlay-stack) | µApp | Set the layout. | |
 | [view.dismiss-icon](docs/view.md#ariessdksetwebviewdismissiconicon-close-back-none) | µApp | Set the icon used to dismiss the view. | |
 | [view.title](docs/view.md#ariessdksetappbartitletitle-string) | µApp | Set the application view title. | |
-| :warning: [view.show-support-icon](docs/view.md#ariessdkshowsupporticonpayload-object) | µApp | Shows or hides the support icon from the UI. | No Op in Android versions greater than `1.0.536` |
+| :warning: [view.show-support-icon](docs/view.md#ariessdkshowsupporticonpayload-object) | µApp | Shows or hides the support icon from the UI. | No Op in Android versions >= 1.0.565 |
 | [scan.qr](docs/scan.md#ariessdkscanqrcode) | µApp | Launch a view to scan a QR code | |
 | [scan.barcode](docs/scan.md#ariessdkscanbarcode) | µApp | Launch a view to scan a regular Barcode | |
 | [scan.identity](docs/scan.md#ariessdkscanidentitysettings-object) | µApp | Launch a view to scan an identification document and verify the identity of the user for KYC purposes. | |
@@ -29,8 +29,8 @@ Messages are sent from the webview with a specific event type that the native ap
 | [session.token](docs/session.md#ariessdksessiontoken) | µApp | Generate a JSON Web Token, with no additional payload, for the current microapp suitable for authenticating the user from an external service with the OAuth Applications secret client key. | |
 | [session.sign](docs/session.md#ariessdksessionsign) | µApp | Like for `session.token`, will generate a JSON Web Signature for the current microapp, but containing additional signed data provided in the params. *NOTE:* In the future, this request *may* cause a popup to be launched for the user's permission. | |
 | [analytics.event](docs/analytics.md#ariessdkanalyticseventevent-object) | µApp | Sends event using the native SDKs. | |
-| [aries.is-topic-supported](docs/aries.md#ariessdkistopicsupported-string) | µApp | Checks if the provided topic is supported by the native app. | Supported in android > 1.0.536 |
-| [email.inbox](docs/email.md#ariessdkopenemailinbox) | µApp | Opens the native email inbox (or the activity picker if there is no default email app) | Supported in android > 1.0.536 |
+| [aries.is-topic-supported](docs/aries.md#ariessdkistopicsupported-string) | µApp | Checks if the provided topic is supported by the native app. | Supported in android > 1.0.565 |
+| [email.inbox](docs/email.md#ariessdkopenemailinbox) | µApp | Opens the native email inbox (or the activity picker if there is no default email app) | Supported in android > 1.0.565 |
 
 Messages are published in a standardised format that must include a `topic` and `params` if there are any. For example:
 
