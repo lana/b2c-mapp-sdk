@@ -1,5 +1,9 @@
 # Lana B2C Microapp SDK Library Changelog
 
+## v0.6.0
+- Renamed `native.open-email-inbox` to `email.inbox`
+- Renamed `native.is-topic-supported` to `aries.is-topic-supported`
+
 ## v0.5.0
 - Removed `user.region-id` since no µapp was using it.
 - Added `native.is-topic-supported`

@@ -63,9 +63,9 @@ const fetchAccount = () => publishMessageToBusAndWaitForResponseWithMatchingId('
 
 const fetchUser = () => publishMessageToBusAndWaitForResponseWithMatchingId('user.fetch');
 
-const isTopicSupported = (topic) => publishMessageToBusAndWaitForResponseWithMatchingId('native.is-topic-supported', { topic });
+const isTopicSupported = (topic) => publishMessageToBusAndWaitForResponseWithMatchingId('aries.is-topic-supported', { topic });
 
-const openEmailInbox = () => publishMessageToBusAndWaitForResponseWithMatchingId('native.open-email-inbox');
+const openEmailInbox = () => publishMessageToBusAndWaitForResponseWithMatchingId('email.inbox');
 
 const scanBarcode = () => publishMessageToBusAndWaitForResponseWithMatchingId('scan.barcode');
 
