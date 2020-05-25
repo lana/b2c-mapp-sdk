@@ -4,7 +4,9 @@ const hasAriesLocalBus = () => ('AriesLocalBus' in window);
 
 const hasParent = () => (('parent' in window) && (window.parent !== window));
 
-const showIncorrectConfigurationAlert = () => { alert(`Environment not supported. ${navigator.userAgent} | AriesLocalBus: ${window.AriesLocalBus}`); }; // eslint-disable-line no-alert
+const showIncorrectConfigurationAlert = () => {
+  console.warn(`Environment not supported. ${navigator.userAgent} | AriesLocalBus: ${window.AriesLocalBus}`); // eslint-disable-line no-console
+};
 
 const publishMessageToBus = (message) => {
   switch (true) {
