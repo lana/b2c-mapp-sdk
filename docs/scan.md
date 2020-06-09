@@ -26,27 +26,28 @@ AriesSDK.scanBarcode();
 
 Launch a view to scan a regular Barcode
 
-### AriesSDK.scanDocument()
+### AriesSDK.scanDocument(documentName: String)
 
 ```js readonly
-AriesSDK.scanDocument();
+AriesSDK.scanDocument('documentName');
 ```
 
-Launch a view to scan a document. It returns the hash and the name of the stored document.
+Launch a view to scan a document, if the document name is missing "proofOfAddress" will be used as a default to keep the retro-compatibility.
+It returns the hash and the name of the stored document.
 
 Response:
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | `hash` | string | Stored document hash. |
-| `name` | string | Stored document name. |
+| `name` | string | Stored document name. :warning: This is still returned just to keep backward compatibility. It may be removed at some point |
 
 A successful response body will contain the following information:
 ```js readonly
 {
   response: {
-    "hash":"762c406af516e07bde1c08d3d8d6c036701e49a5825b8fa785ceae3c0786695b",
-    "name":"proofOfAddress"
-    }
+    "hash": "762c406af516e07bde1c08d3d8d6c036701e49a5825b8fa785ceae3c0786695b",
+    "name": "signature"
+  }
 }
 ```
