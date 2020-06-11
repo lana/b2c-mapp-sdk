@@ -71,7 +71,7 @@ const openEmailInbox = () => publishMessageToBusAndWaitForResponseWithMatchingId
 
 const scanBarcode = () => publishMessageToBusAndWaitForResponseWithMatchingId('scan.barcode');
 
-const scanDocument = () => publishMessageToBusAndWaitForResponseWithMatchingId('scan.document');
+const scanDocument = (name = 'proofOfAddress') => publishMessageToBusAndWaitForResponseWithMatchingId('scan.document', name);
 
 const scanIdentity = (options) => publishMessageToBusAndWaitForResponseWithMatchingId('scan.identity', options);
 
