@@ -1,5 +1,8 @@
 # Lana B2C Microapp SDK Library Changelog
 
+## v0.7.2
+- Added back `user.region-id` and `view.show-support-icon`
+
 ## v0.6.0
 - Renamed `native.open-email-inbox` to `email.inbox`
 - Renamed `native.is-topic-supported` to `aries.is-topic-supported`
