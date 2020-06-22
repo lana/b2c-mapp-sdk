@@ -83,6 +83,8 @@ const sessionToken = () => publishMessageToBusAndWaitForResponseWithMatchingId('
 
 const setAppBarTitle = (title = '') => publishMessageToBusAndWaitForResponseWithMatchingId('view.title', { title });
 
+const setDefaultRegionId = (regionId = '') => publishMessageToBusAndWaitForResponseWithMatchingId('user.region-id', { regionId });
+
 const setWebViewDismissIcon = (icon = 'close') => publishMessageToBusAndWaitForResponseWithMatchingId('view.dismiss-icon', { icon });
 
 const setWebViewLayout = (displayMode = 'stack') => publishMessageToBusAndWaitForResponseWithMatchingId('view.layout', { displayMode });
@@ -112,6 +114,7 @@ const sdk = {
   sessionSign,
   sessionToken,
   setAppBarTitle,
+  setDefaultRegionId,
   setWebViewDismissIcon,
   setWebViewLayout,
   shareText,
