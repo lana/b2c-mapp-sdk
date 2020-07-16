@@ -1,5 +1,8 @@
 # Lana B2C Microapp SDK Library Changelog
 
+## v0.8.0
+- Added `chat.create-case`
+
 ## v0.7.2
 - Added back `user.region-id` and `view.show-support-icon`
 

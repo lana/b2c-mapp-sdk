@@ -99,6 +99,8 @@ const verifySelfie = (userId) => publishMessageToBusAndWaitForResponseWithMatchi
 
 const webViewLoaded = () => publishMessageToBusAndWaitForResponseWithMatchingId('view.loaded');
 
+const chatCreateCase = (options) => publishMessageToBusAndWaitForResponseWithMatchingId('chat.create-case', options);
+
 const sdk = {
   analyticsEvent,
   closeWebView,
@@ -122,6 +124,7 @@ const sdk = {
   transactionExecute,
   verifySelfie,
   webViewLoaded,
+  chatCreateCase,
 };
 
 export default sdk;
