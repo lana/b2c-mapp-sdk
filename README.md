@@ -30,8 +30,9 @@ Messages are sent from the webview with a specific event type that the native ap
 | [session.token](docs/session.md#ariessdksessiontoken) | µApp | Generate a JSON Web Token, with no additional payload, for the current microapp suitable for authenticating the user from an external service with the OAuth Applications secret client key. | |
 | [session.sign](docs/session.md#ariessdksessionsign) | µApp | Like for `session.token`, will generate a JSON Web Signature for the current microapp, but containing additional signed data provided in the params. *NOTE:* In the future, this request *may* cause a popup to be launched for the user's permission. | |
 | [analytics.event](docs/analytics.md#ariessdkanalyticseventevent-object) | µApp | Sends event using the native SDKs. | |
-| [aries.is-topic-supported](docs/aries.md#ariessdkistopicsupported-string) | µApp | Checks if the provided topic is supported by the native app. | Supported in android > 1.0.565 |
+| [aries.is-topic-supported](docs/aries.md#ariessdkistopicsupported-string) | µApp | Checks if the provided topic is supported by the native app. | Supported in android > 1.0.565 |µ
 | [email.inbox](docs/email.md#ariessdkopenemailinbox) | µApp | Opens the native email inbox (or the activity picker if there is no default email app) | Supported in android > 1.0.565 |
+| [chat.create-case](docs/chat.md#createcaseproperties-object) | µApp | Opens the native flow to create support tickets | Supported from version... TBD |
 
 Messages are published in a standardised format that must include a `topic` and `params` if there are any. For example:
 
