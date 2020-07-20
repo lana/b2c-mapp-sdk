@@ -1,5 +1,8 @@
 # Lana B2C Microapp SDK Library Changelog
 
+## v0.8.1
+ - Added POC of a feature flag for AriesSDK events.
+ 
 ## v0.8.0
 - Added `chat.create-case`
 

@@ -23,6 +23,12 @@ const publishMessageToBus = (message) => {
 const unwrapResponse = ({ response = {} } = {}) => response;
 
 const publishMessageToBusAndWaitForResponseWithMatchingId = (topic, params = {}) => new Promise((resolve, reject) => {
+  const featureFlags = window.featureFlags ? window.featureFlags : null;
+  const topicFeatureFlag = featureFlags && featureFlags[topic] !== undefined ? featureFlags[topic] : false;
+  if (topicFeatureFlag) {
+    resolve({});
+    return;
+  }
   const payload = {
     id: uuidv4(),
     topic,
