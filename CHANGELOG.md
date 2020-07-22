@@ -1,5 +1,8 @@
 # Lana B2C Microapp SDK Library Changelog
 
+## v0.8.2
+ - (temporary) Added analytics.eventStaging to only trigger analytics in staging environment
+ 
 ## v0.8.1
  - Added POC of a feature flag for AriesSDK events.
  

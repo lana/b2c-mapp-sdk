@@ -23,12 +23,6 @@ const publishMessageToBus = (message) => {
 const unwrapResponse = ({ response = {} } = {}) => response;
 
 const publishMessageToBusAndWaitForResponseWithMatchingId = (topic, params = {}) => new Promise((resolve, reject) => {
-  const { featureFlags } = window;
-  const topicFeatureFlag = (featureFlags && (featureFlags[topic] !== undefined)) ? featureFlags[topic] : true;
-  if (!topicFeatureFlag) {
-    resolve({});
-    return;
-  }
   const payload = {
     id: uuidv4(),
     topic,
@@ -61,7 +55,7 @@ const setupAriesOrParentMessageBus = () => {
 };
 setupAriesOrParentMessageBus();
 
-const analyticsEvent = (options) => publishMessageToBusAndWaitForResponseWithMatchingId('analytics.event', options);
+const analyticsEvent = (options) => publishMessageToBusAndWaitForResponseWithMatchingId('analytics.eventStaging', options);
 
 const closeWebView = () => publishMessageToBusAndWaitForResponseWithMatchingId('view.close');
 
