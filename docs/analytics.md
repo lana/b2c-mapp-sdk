@@ -22,11 +22,11 @@ Sends events to the different analytics provider configured in the native app.
 
 ```js readonly
 const payload = {
-        fullName: '... ... ...',
-        country: '...',
-        email: '...',
-        phoneNumber: '...',
-        gender: '...',
+        fullName: 'Name Surname1 Surname2',
+        country: 'MX',
+        email: 'emailAddress@email.com',
+        phoneNumber: '1231236666',
+        gender: 'M',
 };
 AriesSDK.udpateAnalyticsUserInfo(payload);
 ```
