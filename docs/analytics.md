@@ -31,6 +31,7 @@ const payload = {
 AriesSDK.udpateAnalyticsUserInfo(payload);
 ```
 Updates user information to be tracked on Analytic events.
+This method MUST be used right before `AriesSDK.analyticsEvent(...)` in order to allow Native to get that new user data to be sent within the analytics payload for those events that required them.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
