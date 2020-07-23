@@ -17,3 +17,25 @@ Sends events to the different analytics provider configured in the native app.
 | ----- | ---- | ----------- |
 | `eventName` | string | Event name that will be sent to the analytics provider |
 | `properties` | Object | List of `key/value` pairs |
+
+### AriesSDK.udpateAnalyticsUserInfo(event: Object)
+
+```js readonly
+const payload = {
+        fullName: '... ... ...',
+        country: '...',
+        email: '...',
+        phoneNumber: '...',
+        gender: '...',
+};
+AriesSDK.udpateAnalyticsUserInfo(payload);
+```
+Updates user information to be tracked on Analytic events.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+|  fullName | String | Name + Surname1 + Surname2  |
+|  country | String | Selected user country  |
+|  email | String | Email  |
+|  phoneNumber | String | Phone number  |
+|  gender | String | Gender  |
