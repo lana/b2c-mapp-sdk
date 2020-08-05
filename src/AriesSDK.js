@@ -57,7 +57,7 @@ setupAriesOrParentMessageBus();
 
 const analyticsEvent = (options) => publishMessageToBusAndWaitForResponseWithMatchingId('analytics.eventStaging', options);
 
-const udpateAnalyticsUserInfo = (options) => publishMessageToBusAndWaitForResponseWithMatchingId('analytics.updateUser', options);
+const updateAnalyticsUserInfo = (options) => publishMessageToBusAndWaitForResponseWithMatchingId('analytics.updateUser', options);
 
 const closeWebView = () => publishMessageToBusAndWaitForResponseWithMatchingId('view.close');
 
@@ -105,7 +105,7 @@ const chatCreateCase = (options) => publishMessageToBusAndWaitForResponseWithMat
 
 const sdk = {
   analyticsEvent,
-  udpateAnalyticsUserInfo,
+  updateAnalyticsUserInfo,
   closeWebView,
   createSelfie,
   fetchAccount,
