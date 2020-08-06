@@ -55,7 +55,7 @@ const setupAriesOrParentMessageBus = () => {
 };
 setupAriesOrParentMessageBus();
 
-const analyticsEvent = (options) => publishMessageToBusAndWaitForResponseWithMatchingId('analytics.eventStaging', options);
+const analyticsEvent = (options) => publishMessageToBusAndWaitForResponseWithMatchingId('analytics.event', options);
 
 const updateAnalyticsUserInfo = (options) => publishMessageToBusAndWaitForResponseWithMatchingId('analytics.updateUser', options);
 
