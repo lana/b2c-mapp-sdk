@@ -8,6 +8,7 @@ Request data for the current user. The response will include the following field
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
+| `id` | string | User id |
 | `region_id` | string | Two-letter code of the user's region. |
 | `locale` | string | ISO code for user's locale, e.g. `es-MX`, `en-US`, etc. |
 | `name.prefix` | string | Like `Mr.`, `Mrs.`, `Miss`, etc. Not normally used. |
