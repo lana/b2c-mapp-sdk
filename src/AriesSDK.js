@@ -93,7 +93,7 @@ const setWebViewLayout = (displayMode = 'stack') => publishMessageToBusAndWaitFo
 
 const shareText = (text = '') => publishMessageToBusAndWaitForResponseWithMatchingId('share.text', { text });
 
-const showSupportIcon = (show) => publishMessageToBusAndWaitForResponseWithMatchingId('view.show-support-icon', { show: (show !== 'false') });
+const showSupportIcon = (show = false) => publishMessageToBusAndWaitForResponseWithMatchingId('view.show-support-icon', { show });
 
 const transactionExecute = (options) => publishMessageToBusAndWaitForResponseWithMatchingId('transaction.execute', options);
 
