@@ -103,6 +103,8 @@ const webViewLoaded = () => publishMessageToBusAndWaitForResponseWithMatchingId(
 
 const chatCreateCase = (options) => publishMessageToBusAndWaitForResponseWithMatchingId('chat.create-case', options);
 
+const retrieveSmsOtp = () => publishMessageToBusAndWaitForResponseWithMatchingId('sms.retrieve-otp');
+
 const sdk = {
   analyticsEvent,
   updateAnalyticsUserInfo,
@@ -128,6 +130,7 @@ const sdk = {
   verifySelfie,
   webViewLoaded,
   chatCreateCase,
+  retrieveSmsOtp,
 };
 
 export default sdk;
