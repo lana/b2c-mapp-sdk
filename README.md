@@ -99,6 +99,15 @@ Response bodies should follow lowercase `snake_case` semantics, with a preferenc
 
 The Aries SDK methods are provided by the SDK to provide a wrapper around the message bus events. Each will return an ES6 Promise.
 
+### Browser
+
+To generate a version of the Aries SDK compatible with browsers (e.g. to include
+directly in a `<script>` tag in a microapp) run the following command:
+
+```
+browserify src/AriesSDK.js -o ariessdk.js -t [ babelify --plugins [ @babel/plugin-transform-modules-commonjs babel-plugin-add-module-exports ] ] --standalone AriesSDK
+```
+
 ### Releasing
 
 - `git tag #.#.#`
