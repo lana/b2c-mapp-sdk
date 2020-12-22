@@ -34,6 +34,7 @@ Messages are sent from the webview with a specific event type that the native ap
 | [email.inbox](docs/email.md#ariessdkopenemailinbox) | µApp | Opens the native email inbox (or the activity picker if there is no default email app) | Supported in android > 1.0.565 |
 | [chat.create-case](docs/chat.md#createcaseproperties-object) | µApp | Opens the native flow to create support tickets | Supported from version... 1.3.X |
 | [sms.retrieve-otp](docs/sms.md#retieve-otp) | µApp | Ask native to listen for auth sms and retrive the otp code | Supported in Android > 1.5.X |
+| [view.show-support-icon](docs/view.md#ariessdkopenwithdedicatedappfileandtype-object(docs/sms.md#retieve-otp) | µApp | Ask native to open file with the best app installed to handle the given url and mimeType | Supported in Android > 1.7.X |
 
 Messages are published in a standardised format that must include a `topic` and `params` if there are any. For example:
 

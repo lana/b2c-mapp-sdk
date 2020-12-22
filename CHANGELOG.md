@@ -1,5 +1,8 @@
 # Lana B2C Microapp SDK Library Changelog
 
+## v0.10.0
+- Adding method to open documents in native.
+
 ## v0.9.0
 - Adding method to wait for a OTP token
 

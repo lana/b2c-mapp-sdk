@@ -33,7 +33,7 @@ AriesSDK.setWebViewLayout('overlay');
 
 Changes how the webview is displayed in the UI. The default mode is `stack` and it renders the webview just after the native UI top-bar.
 
-The `overlay` mode displays the webview below the native UI top-bar, this means the webview starts at `0x 0y` from the app screen. When this mode is activated, the native UI top-bar has a transparent background alowing you to blend your µapp with the native UI.
+The `overlay` mode displays the webview below the native UI top-bar, this means the webview starts at `0x 0y` from the app screen. When this mode is activated, the native UI top-bar has a transparent background allowing you to blend your µapp with the native UI.
 
 ### AriesSDK.setWebViewDismissIcon(icon: 'close', 'back', 'none')
 
@@ -50,3 +50,19 @@ AriesSDK.showSupportIcon(false);
 ```
 
 Whether we want to show (true) or hide (false) the support icon.
+
+### AriesSDK.openWithDedicatedApp(fileAndType: Object)
+
+```js readonly
+const payload = {
+    url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
+    mimeType: 'application/pdf'
+};
+AriesSDK.openWithDedicatedApp(payload);
+```
+Sends events to the different analytics provider configured in the native app.
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| `url` | string | the url where the file/document we want to open natively is hosted |
+| `mimeType` | string | Optional, mimeType for the document we are trying to open. If missing will be inferred from the url. |
