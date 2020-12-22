@@ -105,6 +105,8 @@ const chatCreateCase = (options) => publishMessageToBusAndWaitForResponseWithMat
 
 const retrieveSmsOtp = () => publishMessageToBusAndWaitForResponseWithMatchingId('sms.retrieve-otp');
 
+const openWithDedicatedApp = (options) => publishMessageToBusAndWaitForResponseWithMatchingId('view.open-with-dedicated-app', options);
+
 const sdk = {
   analyticsEvent,
   updateAnalyticsUserInfo,
@@ -131,6 +133,7 @@ const sdk = {
   webViewLoaded,
   chatCreateCase,
   retrieveSmsOtp,
+  openWithDedicatedApp,
 };
 
 export default sdk;
