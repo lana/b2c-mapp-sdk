@@ -91,7 +91,7 @@ const setWebViewDismissIcon = (icon = 'close') => publishMessageToBusAndWaitForR
 
 const setWebViewLayout = (displayMode = 'stack') => publishMessageToBusAndWaitForResponseWithMatchingId('view.layout', { displayMode });
 
-const shareText = (text = '') => publishMessageToBusAndWaitForResponseWithMatchingId('share.text', { text });
+const shareText = (content = '') => publishMessageToBusAndWaitForResponseWithMatchingId('share.text', { content });
 
 const showSupportIcon = (show = false) => publishMessageToBusAndWaitForResponseWithMatchingId('view.show-support-icon', { show });
 
