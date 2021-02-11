@@ -16,7 +16,8 @@
     "*.test.js",
     "*.test.jsx",
     "jest.config.js",
-    "build/**/*"
+    "build/**/*",
+    "dist/**/*"
   ],
   "rules": {
     "no-console": 1,
