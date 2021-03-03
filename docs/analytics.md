@@ -23,27 +23,26 @@ Sends events to the different analytics provider configured in the native app.
 ```js readonly
 const payload = {
         fullName: 'Name Surname1 Surname2',
-        country: 'MX',
         email: 'emailAddress@email.com',
         phoneNumber: '1231236666',
         gender: 'M',
-        goal: 'goalValue',
-        goalBased: 'goalBasedValue',
-        goalBasedLoanDetails: 'goalBasedLoanDetailsValue'
+  			property1: true,
+  			property2: 123
 };
 AriesSDK.udpateAnalyticsUserInfo(payload);
 ```
 Updates user information to be tracked on Analytic events.
+
 This method MUST be used right before `AriesSDK.analyticsEvent(...)` in order to allow Native to get that new user data to be sent within the analytics payload for those events that required them.
+
+Some values are handled slightly differently, so if you want to send any of them please use the specific key:
+
+#### Specific keys supported ####
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 |  fullName | String | Name + Surname1 + Surname2  |
-|  country | String | Selected user country  |
 |  email | String | Email  |
 |  phoneNumber | String | Phone number  |
 |  gender | String | Gender  |
-|  goal | String | Goal  |
-|  goalBased | String | Goal Based  |
-|  goalBasedLoanDetails | String | Goal Based Loan Details  |
 
