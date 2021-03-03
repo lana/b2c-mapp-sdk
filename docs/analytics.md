@@ -26,8 +26,8 @@ const payload = {
         email: 'emailAddress@email.com',
         phoneNumber: '1231236666',
         gender: 'M',
-  		property1: true,
-  		property2: 123
+        property1: true,
+        property2: 123
 };
 AriesSDK.udpateAnalyticsUserInfo(payload);
 ```
