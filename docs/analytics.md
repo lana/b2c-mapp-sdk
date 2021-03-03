@@ -27,6 +27,9 @@ const payload = {
         email: 'emailAddress@email.com',
         phoneNumber: '1231236666',
         gender: 'M',
+        goal: 'goalValue',
+        goalBased: 'goalBasedValue',
+        goalBasedLoanDetails: 'goalBasedLoanDetailsValue'
 };
 AriesSDK.udpateAnalyticsUserInfo(payload);
 ```
@@ -40,3 +43,7 @@ This method MUST be used right before `AriesSDK.analyticsEvent(...)` in order to
 |  email | String | Email  |
 |  phoneNumber | String | Phone number  |
 |  gender | String | Gender  |
+|  goal | String | Goal  |
+|  goalBased | String | Goal Based  |
+|  goalBasedLoanDetails | String | Goal Based Loan Details  |
+
