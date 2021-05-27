@@ -38,7 +38,7 @@ Messages are sent from the webview with a specific event type that the native ap
 | [contacts.fetch](docs/contacts.md#contacts-fetch) | µApp | Ask the native for the contacts stored on the device. | Supported in Android > v1.7.805 |
 | [permissions.check](docs/permissions.md#permissions-check) | µApp | Ask native, if the app has been granted the permission granted by parameter. It only supports: `contacts`, `camera` and `location` | Supported in Android > v1.7.805 |
 | [settings.open](docs/settings.md#settings-open) | µApp | Launch the native application settings screen. | Supported in Android > v1.7.805 |
-| [device-info.fetch](docs/device.md#deviceinfo-fetch) | µApp | It obtains information from the device, from Lana's own app and the list of installed apps. | Supported in Android > 1.7.8X |
+| [device-info.fetch](docs/device.md#deviceinfo-fetch) | µApp | It obtains information from the device, from Lana's own app and the list of installed apps. | Supported in Android > 1.7.811 |
 
 Messages are published in a standardised format that must include a `topic` and `params` if there are any. For example:
 
