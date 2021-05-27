@@ -107,6 +107,12 @@ const retrieveSmsOtp = () => publishMessageToBusAndWaitForResponseWithMatchingId
 
 const openWithDedicatedApp = (options) => publishMessageToBusAndWaitForResponseWithMatchingId('view.open-with-dedicated-app', options);
 
+const checkDevicePermissions = (permission) => publishMessageToBusAndWaitForResponseWithMatchingId('permissions.check', { permission });
+
+const fetchContacts = () => publishMessageToBusAndWaitForResponseWithMatchingId('contacts.fetch');
+
+const openSettings = () => publishMessageToBusAndWaitForResponseWithMatchingId('settings.open');
+
 const sdk = {
   analyticsEvent,
   updateAnalyticsUserInfo,
@@ -134,6 +140,9 @@ const sdk = {
   chatCreateCase,
   retrieveSmsOtp,
   openWithDedicatedApp,
+  checkDevicePermissions,
+  fetchContacts,
+  openSettings,
 };
 
 export default sdk;
