@@ -21,7 +21,7 @@ Messages are sent from the webview with a specific event type that the native ap
 | [scan.identity](docs/scan.md#ariessdkscanidentitysettings-object) | µApp | Launch a view to scan an identification document and verify the identity of the user for KYC purposes. | |
 | [scan.document](docs/scan.md#ariessdkscandocument) | µApp | Launch a view to scan a document. | |
 | [selfie.enrole](docs/selfie.md#ariessdkcreateselfieuserId-string) | µApp | Launch a view that will be used to enrole a new selfie, usually used in signup. | |
-| [selfie.verify](docs/selfie.md#ariessdkverifyselfieuserId-string) | µApp | Launch a view to verify an existing selfie. |
+| [selfie.verify](docs/selfie.md#ariessdkverifyselfieuserId-string) | µApp | Launch a view to verify an existing selfie. ||
 | [user.fetch](docs/user.md#ariessdkfetchuser) | µApp | Request data on the current user. | |
 | [user.region-id](docs/user.md#ariessdksetdefaultregionidregionid-string) | µApp | Sets the default region for the current microapp. This will be used as a fallback when the user is logged out. | |
 | [account.fetch](docs/account.md#ariessdkfetchaccount) | µApp | Request data on the currently selected account. | |
@@ -30,11 +30,15 @@ Messages are sent from the webview with a specific event type that the native ap
 | [session.token](docs/session.md#ariessdksessiontoken) | µApp | Generate a JSON Web Token, with no additional payload, for the current microapp suitable for authenticating the user from an external service with the OAuth Applications secret client key. | |
 | [session.sign](docs/session.md#ariessdksessionsign) | µApp | Like for `session.token`, will generate a JSON Web Signature for the current microapp, but containing additional signed data provided in the params. *NOTE:* In the future, this request *may* cause a popup to be launched for the user's permission. | |
 | [analytics.event](docs/analytics.md#ariessdkanalyticseventevent-object) | µApp | Sends event using the native SDKs. | |
-| [aries.is-topic-supported](docs/aries.md#ariessdkistopicsupported-string) | µApp | Checks if the provided topic is supported by the native app. | Supported in android > 1.0.565 |µ
+| [aries.is-topic-supported](docs/aries.md#ariessdkistopicsupported-string) | µApp | Checks if the provided topic is supported by the native app. | Supported in android > 1.0.565 |
 | [email.inbox](docs/email.md#ariessdkopenemailinbox) | µApp | Opens the native email inbox (or the activity picker if there is no default email app) | Supported in android > 1.0.565 |
 | [chat.create-case](docs/chat.md#createcaseproperties-object) | µApp | Opens the native flow to create support tickets | Supported from version... 1.3.X |
 | [sms.retrieve-otp](docs/sms.md#retieve-otp) | µApp | Ask native to listen for auth sms and retrive the otp code | Supported in Android > 1.5.X |
-| [view.show-support-icon](docs/view.md#ariessdkopenwithdedicatedappfileandtype-object(docs/sms.md#retieve-otp) | µApp | Ask native to open file with the best app installed to handle the given url and mimeType | Supported in Android > 1.7.X |
+| [view.show-support-icon](docs/view.md#ariessdkopenwithdedicatedappfileandtype-object) | µApp | Ask native to open file with the best app installed to handle the given url and mimeType | Supported in Android > 1.7.X |
+| [contacts.fetch](docs/contacts.md#contacts-fetch) | µApp | Ask the native for the contacts stored on the device. | Supported in Android > v1.7.805 |
+| [permissions.check](docs/permissions.md#permissions-check) | µApp | Ask native, if the app has been granted the permission granted by parameter. It only supports: `contacts`, `camera` and `location` | Supported in Android > v1.7.805 |
+| [settings.open](docs/settings.md#settings-open) | µApp | Launch the native application settings screen. | Supported in Android > v1.7.805 |
+| [device-info.fetch](docs/device.md#deviceinfo-fetch) | µApp | It obtains information from the device, from Lana's own app and the list of installed apps. | Supported in Android > 1.7.811 |
 
 Messages are published in a standardised format that must include a `topic` and `params` if there are any. For example:
 

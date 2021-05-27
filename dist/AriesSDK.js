@@ -112,6 +112,12 @@ var AriesSDK = (function (uuidv4) {
 
   const openWithDedicatedApp = (options) => publishMessageToBusAndWaitForResponseWithMatchingId('view.open-with-dedicated-app', options);
 
+  const checkDevicePermissions = (permission) => publishMessageToBusAndWaitForResponseWithMatchingId('permissions.check', { permission });
+
+  const fetchContacts = () => publishMessageToBusAndWaitForResponseWithMatchingId('contacts.fetch');
+
+  const openSettings = () => publishMessageToBusAndWaitForResponseWithMatchingId('settings.open');
+
   const sdk = {
     analyticsEvent,
     updateAnalyticsUserInfo,
@@ -139,6 +145,9 @@ var AriesSDK = (function (uuidv4) {
     chatCreateCase,
     retrieveSmsOtp,
     openWithDedicatedApp,
+    checkDevicePermissions,
+    fetchContacts,
+    openSettings,
   };
 
   return sdk;
