@@ -113,6 +113,8 @@ const fetchContacts = () => publishMessageToBusAndWaitForResponseWithMatchingId(
 
 const openSettings = () => publishMessageToBusAndWaitForResponseWithMatchingId('settings.open');
 
+const getDeviceInfo = () => publishMessageToBusAndWaitForResponseWithMatchingId('device-info.fetch');
+
 const sdk = {
   analyticsEvent,
   updateAnalyticsUserInfo,
@@ -143,6 +145,7 @@ const sdk = {
   checkDevicePermissions,
   fetchContacts,
   openSettings,
+  getDeviceInfo,
 };
 
 export default sdk;
