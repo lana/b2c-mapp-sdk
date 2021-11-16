@@ -1,9 +1,5 @@
-var AriesSDK = (function (uuidv4) {
+var AriesSDK = (function (uuid) {
   'use strict';
-
-  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
-
-  var uuidv4__default = /*#__PURE__*/_interopDefaultLegacy(uuidv4);
 
   const hasAriesLocalBus = () => ('AriesLocalBus' in window);
 
@@ -29,7 +25,7 @@ var AriesSDK = (function (uuidv4) {
 
   const publishMessageToBusAndWaitForResponseWithMatchingId = (topic, params = {}) => new Promise((resolve, reject) => {
     const payload = {
-      id: uuidv4__default['default'](),
+      id: uuid.v4(),
       topic,
       params,
     };
@@ -112,11 +108,13 @@ var AriesSDK = (function (uuidv4) {
 
   const openWithDedicatedApp = (options) => publishMessageToBusAndWaitForResponseWithMatchingId('view.open-with-dedicated-app', options);
 
-  const checkDevicePermissions = (permission) => publishMessageToBusAndWaitForResponseWithMatchingId('permissions.check', { permission });
+  const checkPermission = (permission) => publishMessageToBusAndWaitForResponseWithMatchingId('permissions.check', { permission });
 
   const fetchContacts = () => publishMessageToBusAndWaitForResponseWithMatchingId('contacts.fetch');
 
   const openSettings = () => publishMessageToBusAndWaitForResponseWithMatchingId('settings.open');
+
+  const fetchDeviceInfo = () => publishMessageToBusAndWaitForResponseWithMatchingId('device-info.fetch');
 
   const sdk = {
     analyticsEvent,
@@ -145,11 +143,12 @@ var AriesSDK = (function (uuidv4) {
     chatCreateCase,
     retrieveSmsOtp,
     openWithDedicatedApp,
-    checkDevicePermissions,
+    checkPermission,
     fetchContacts,
     openSettings,
+    fetchDeviceInfo,
   };
 
   return sdk;
 
-}(uuidv4));
+})(uuid);
