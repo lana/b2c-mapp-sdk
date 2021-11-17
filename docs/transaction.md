@@ -9,4 +9,4 @@ Launches the payment screen with the given settings.
 | `amount` | `String` | **true** |
 | `destinationURL` | `String` | **true** |
 | `title` | `String` | **true** |
-| `meta` | `String` | **true** |
+| `description` | `String` | **true** |
