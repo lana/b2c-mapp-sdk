@@ -1,6 +1,6 @@
 {
   "name": "@lana/b2c-mapp-sdk",
-  "version": "0.12.0",
+  "version": "0.13.0",
   "description": "Lana B2C MicroApp SDK for interacting with the Mobile Aries browser.",
   "repository": {
     "type": "git",
@@ -14,21 +14,21 @@
   "main": "src/AriesSDK.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup src/*.js -d dist -f iife -n AriesSDK -g uuid/v4:uuidv4",
+    "build": "rollup src/*.js -d dist -f iife -n AriesSDK -g uuid:uuid",
     "prepare": "npm run build",
     "lint": "eslint --ext .jsx,.js ."
   },
   "dependencies": {
-    "uuid": "^3.0.0"
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^18.1.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-fp": "^2.3.0",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.19.0",
-    "eslint-plugin-react-hooks": "^3.0.0",
-    "rollup": "^2.38.5"
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.27.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "rollup": "^2.60.0"
   }
 }
