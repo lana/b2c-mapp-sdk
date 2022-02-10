@@ -25,7 +25,7 @@ AriesSDK.setAppBarTitleTitle('My custom title');
 
 Displays a custom title for the native UI top-bar.
 
-### AriesSDK.setWebViewLayout(displayMode: 'overlay', 'stack')
+### AriesSDK.setWebViewLayout(displayMode: 'overlay', 'stack', 'borderless-stack')
 
 ```js readonly
 AriesSDK.setWebViewLayout('overlay');
@@ -34,6 +34,8 @@ AriesSDK.setWebViewLayout('overlay');
 Changes how the webview is displayed in the UI. The default mode is `stack` and it renders the webview just after the native UI top-bar.
 
 The `overlay` mode displays the webview below the native UI top-bar, this means the webview starts at `0x 0y` from the app screen. When this mode is activated, the native UI top-bar has a transparent background allowing you to blend your µapp with the native UI.
+
+The `borderless-stack` mode removes the bottom border of the native UI top-bar.
 
 ### AriesSDK.setWebViewDismissIcon(icon: 'close', 'back', 'none')
 
