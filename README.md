@@ -12,7 +12,7 @@ Messages are sent from the webview with a specific event type that the native ap
 | -----------| ------ | ----------- | ----- |
 | [view.loaded](docs/view.md#ariessdkwebviewloaded) | µApp | The microapp sends this message to indicate they have loaded | |
 | [view.close](docs/view.md#ariessdkclosewebview) | µApp | Microapp is requesting that the session has finished and can close the window | |
-| [view.layout](docs/view.md#ariessdksetwebviewlayoutdisplaymode-overlay-stack) | µApp | Set the layout. | |
+| [view.layout](docs/view.md#ariessdksetwebviewlayoutdisplaymode-overlay-stack-borderless-stack) | µApp | Set the layout. | |
 | [view.dismiss-icon](docs/view.md#ariessdksetwebviewdismissiconicon-close-back-none) | µApp | Set the icon used to dismiss the view. | |
 | [view.title](docs/view.md#ariessdksetappbartitletitle-string) | µApp | Set the application view title. | |
 | [view.show-support-icon](docs/view.md#ariessdkshowsupporticonpayload-object) | µApp | Shows or hides the support icon from the UI. | |
