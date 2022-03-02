@@ -10,3 +10,4 @@ Launches the payment screen with the given settings.
 | `destinationURL` | `String` | **true** |
 | `title` | `String` | **true** |
 | `description` | `String` | **true** |
+| `type` (transfer 'default', p2p, etc...) | `String` | **false** |
