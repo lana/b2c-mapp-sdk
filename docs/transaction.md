@@ -11,3 +11,4 @@ Launches the payment screen with the given settings.
 | `title` | `String` | **true** |
 | `description` | `String` | **true** |
 | `type` (transfer 'default', p2p, etc...) | `String` | **false** |
+| `reference` | `String` | **false** |
