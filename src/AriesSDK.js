@@ -115,6 +115,8 @@ const openSettings = () => publishMessageToBusAndWaitForResponseWithMatchingId('
 
 const fetchDeviceInfo = () => publishMessageToBusAndWaitForResponseWithMatchingId('device-info.fetch');
 
+const setWebViewHeight = (height = 100) => publishMessageToBusAndWaitForResponseWithMatchingId('view.height', { height });
+
 const sdk = {
   analyticsEvent,
   updateAnalyticsUserInfo,
@@ -146,6 +148,7 @@ const sdk = {
   fetchContacts,
   openSettings,
   fetchDeviceInfo,
+  setWebViewHeight,
 };
 
 export default sdk;

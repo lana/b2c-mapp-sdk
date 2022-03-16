@@ -68,3 +68,11 @@ Sends events to the different analytics provider configured in the native app.
 | ----- | ---- | ----------- |
 | `url` | string | the url where the file/document we want to open natively is hosted |
 | `mimeType` | string | Optional, mimeType for the document we are trying to open. If missing will be inferred from the url. |
+
+### AriesSDK.setWebViewHeight(height: Int)
+
+```js readonly
+AriesSDK.setWebViewHeight(100);
+```
+
+Sets the height of the webview when displayed in a home widget. When set to 0, the widget is hidden.
